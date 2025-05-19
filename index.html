@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FOF INNOVATION Clone with Bootstrap & Cart</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Main Header -->
+  <nav class="navbar navbar-expand-md sticky-top">
+    <div class="container-fluid px-3">
+      <a class="navbar-brand" href="#" tabindex="0" aria-label="FOF INNOVATION Homepage">FOF INNOVATION</a>
+      <button
+        class="navbar-toggler text-white"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarMain"
+        aria-controls="navbarMain"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        ☰
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <form id="searchForm" class="d-flex mx-3" role="search" aria-label="Product search form" onsubmit="event.preventDefault(); handleSearch();">
+          <input
+            id="searchInput"
+            class="form-control"
+            type="search"
+            placeholder="Search FOF INNOVATION"
+            aria-label="Search products"
+            autocomplete="off"
+          />
+          <button class="btn" id="searchBtn" type="submit" aria-label="Search products">
+            🔍
+          </button>
+        </form>
+        <ul class="navbar-nav ms-auto align-items-center gap-3">
+          <li class="nav-item">
+            <a class="nav-link account-link" href="#" tabindex="0" aria-label="Account & Lists">
+              Account & Lists
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link account-link" href="#" tabindex="0" aria-label="Returns & Orders">
+              Returns & Orders
+            </a>
+          </li>
+          <li class="nav-item">
+            <button
+              class="btn btn-link nav-link position-relative px-0"
+              id="cartBtn"
+              aria-label="View Cart"
+              data-bs-toggle="modal"
+              data-bs-target="#cartModal"
+            >
+              🛒 Cart
+              <span
+                id="cartCount"
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                style="font-size: 0.8rem; display: none;"
+                >0</span
+              >
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Secondary nav -->
+  <nav class="secondary-nav no-scrollbar d-flex overflow-auto">
+    <a href="#" tabindex="0">Today's Deals</a>
+    <a href="#" tabindex="0">Customer Service</a>
+    <a href="#" tabindex="0">Gift Cards</a>
+    <a href="#" tabindex="0">Registry</a>
+    <a href="#" tabindex="0">Sell</a>
+    <a href="#" tabindex="0">FOF Basics</a>
+    <a href="#" tabindex="0">Coupons</a>
+    <a href="#" tabindex="0">New Releases</a>
+  </nav>
+
+  <!-- Carousel -->
+  <div
+    id="mainCarousel"
+    class="carousel slide container mt-3 rounded"
+    data-bs-ride="carousel"
+    aria-label="Promotional offers carousel"
+  >
+    <div class="carousel-inner rounded">
+      <div class="carousel-item active">
+        <img
+          src="img/360_F_367502902_oGPUe1zxUgaAF1yeEKpB8TP7S78dcWUG.webp"
+          class="d-block w-100"
+          alt="Innovative technology banner one"
+          draggable="false"
+        />
+      </div>
+      <div class="carousel-item">
+        <img
+          src="img/360_F_1053686749_KXi8pXVCM0eS0nQu9xdfD5wjx9hfwXYT.webp"     
+          class="d-block w-100"
+          alt="Innovative gadget banner two"
+          draggable="false"
+        />
+      </div>
+      <div class="carousel-item">
+        <img
+          src="img/360_F_444298806_TL4e98PxzTBoFoEWvwKWEOUv25z6XFcx.webp"
+          class="d-block w-100"
+          alt="Cutting-edge device banner three"
+          draggable="false"
+        />
+      </div>
+      <div class="carousel-item">
+        <img
+          src="img/360_F_842307204_Fb2mI69Z2UBCykZlGDdF8h6WA4S5vlFG.webp"
+          class="d-block w-100"
+          alt="Cutting-edge device banner three"
+          draggable="false"
+        />
+      </div>
+      <div class="carousel-item">
+        <img
+          src="img/360_F_505564014_866EHPveK2DMsxhEhvd8CmlcC9Nn99UP.webp"
+          class="d-block w-100"
+          alt="Cutting-edge device banner three"
+          draggable="false"
+        />
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#mainCarousel"
+      data-bs-slide="prev"
+      aria-label="Previous slide"
+    >
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#mainCarousel"
+      data-bs-slide="next"
+      aria-label="Next slide"
+    >
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <!-- Category Bar -->
+  <section class="category-bar my-3" aria-label="Shop by categories">
+    <div tabindex="0" class="category-item" aria-label="Electronics category">
+      <img src="https://img.icons8.com/ios-filled/40/ffffff/electronics.png" alt="Electronics Icon" draggable="false" />
+      Electronics
+    </div>
+    <div tabindex="0" class="category-item" aria-label="Books category">
+      <img src="https://img.icons8.com/ios-filled/40/ffffff/open-book--v1.png" alt="Books Icon" draggable="false" />
+      Books
+    </div>
+    <div tabindex="0" class="category-item" aria-label="Fashion category">
+      <img src="https://img.icons8.com/ios-filled/40/ffffff/t-shirt.png" alt="Fashion Icon" draggable="false" />
+      Fashion
+    </div>
+    <div tabindex="0" class="category-item" aria-label="Home & Kitchen category">
+      <img src="https://img.icons8.com/ios-filled/40/ffffff/sofa.png" alt="Home & Kitchen Icon" draggable="false" />
+      Home & Kitchen
+    </div>
+    <div tabindex="0" class="category-item" aria-label="Baby Products category">
+      <img src="https://img.icons8.com/ios-filled/40/ffffff/baby.png" alt="Baby Products Icon" draggable="false" />
+      Baby Products
+    </div>
+    <div tabindex="0" class="category-item" aria-label="Sports & Outdoors category">
+      <img src="https://img.icons8.com/ios-filled/40/ffffff/shoes.png" alt="Sports Icon" draggable="false" />
+      Sports
+    </div>
+    <div tabindex="0" class="category-item" aria-label="Appliances category">
+      <img src="https://img.icons8.com/ios-filled/40/ffffff/refrigerator.png" alt="Appliances Icon" draggable="false" />
+      Appliances
+    </div>
+    <div tabindex="0" class="category-item" aria-label="Toys & Games category">
+      <img src="https://img.icons8.com/ios-filled/40/ffffff/toy.png" alt="Toys Icon" draggable="false" />
+      Toys & Games
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="container mb-5" aria-labelledby="featuredHeading">
+    <h2 id="featuredHeading" class="h4 fw-bold mb-4" style="color: #134e5e; text-shadow: 0 0 4px #71b280aa;">Featured Products</h2>
+    <div id="productsGrid" class="row g-4">
+      <!-- Product cards inserted dynamically -->
+    </div>
+  </section>
+
+  <!-- Cart Modal -->
+  <div
+    class="modal fade"
+    id="cartModal"
+    tabindex="-1"
+    aria-labelledby="cartModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+      <div class="modal-content" style="border-radius: 14px;">
+        <div class="modal-header" style="background: #71b280; color: #134e5e;">
+          <h5 class="modal-title fw-bold" id="cartModalLabel">Your Cart</h5>
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body" id="cartItemsContainer" style="min-height: 180px;">
+          <p class="text-center text-muted fs-5" id="emptyCartMsg">Your cart is empty.</p>
+        </div>
+        <div class="modal-footer d-flex justify-content-between align-items-center" style="background: #134e5e; color: #fcd535; font-weight: 700; font-size: 1.4rem;">
+          <div id="cartTotal">Total: ₹0</div>
+          <button type="button" class="btn btn-warning fw-bold" id="checkoutBtn" disabled>
+            Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2024 FOF INNOVATION. All rights reserved.</p>
+    <div>
+      <a href="#" tabindex="0">Terms of Use</a>
+      |
+      <a href="#" tabindex="0">Privacy Policy</a>
+      |
+      <a href="#" tabindex="0">Help</a>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
